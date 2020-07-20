@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/table.css">
+</head>
+<body class="wrapper">
+  <table id="table" class="table table-striped">
+    <thead id="thead" class="thead-dark">
+      <tr class="table__tr">
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Created date</th>
+        <th>Position</th>
+        <th>Operate</th>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+    </tbody>
+  </table>
+  <input type="button" class="btn btn-success float-right" value="Add New" onclick="generateRow()">
+  <script src="js/index.js"></script>
+</body>
+</html>
