@@ -1,0 +1,9 @@
+.table td {
+  vertical-align: middle;
+}
+
+.table__btn {
+  display: flex;
+  justify-content: space-between;
+  max-width: 200px;
+}

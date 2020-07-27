@@ -12,7 +12,6 @@
   background-color: rgba(0,0,0,0.4); 
 }
 
-
 .modal__content {
   position: relative;
   background-color: white;
@@ -31,7 +30,6 @@
 .modal__btn-name {
   border: 1px solid #ced4da;
 }
-
 
 @-webkit-keyframes animatetop {
   from {top:-300px; opacity:0} 
