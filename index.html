@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/global.css">
   <link rel="stylesheet" href="css/table.css">
   <link rel="stylesheet" href="css/modal.css">
-  <script src="js/table-items.js"></script>
 </head>
 
 <body class="wrapper">
@@ -25,7 +24,6 @@
       </tr>
     </thead>
     <tbody id="tbody">
-      <script>displayRow();</script>
     </tbody>
   </table>
   
@@ -44,39 +42,47 @@
       <form id="modal-form" class="modal-body">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="first-name">First Name</span>
+            <span class="input-group-text">First Name</span>
           </div>
-          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" id="first-name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="last-name">Last Name</span>
+            <span class="input-group-text">Last Name</span>
           </div>
-          <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" id="last-name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="btn modal__btn-name">Position</div>
           </div>
-          <select class="custom-select" id="inputGroupSelect03">
-            <option selected>Choose..</option>
-            <option value="Front-end dev">Front-end dev</option>
-            <option value="Back-end dev">Back-end dev</option>
-            <option value="Full stack dev">Full stack dev</option>
-            <option value="Mobile dev">Mobile dev</option>
-            <option value="Web designer">Web designer</option>
-            <option value="HR">HR</option>
-            <option value="Tester">Tester</option>
-            <option value="Service manager">Service manager</option>
+          <select class="custom-select" id="inputGroupSelect">
+            <option></option>
+            <option>Front-end dev</option>
+            <option>Back-end dev</option>
+            <option>Full stack dev</option>
+            <option>Mobile dev</option>
+            <option>Web designer</option>
+            <option>HR</option>
+            <option>Tester</option>
+            <option>Service manager</option>
           </select>
         </div>
       </а>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="modal-save-btn" class="btn btn-primary" onclick="addWorker()">
+          Save changes
+        </button>
       </div>
     </div>
   </div>
 
-  <script src="js/modal-window.js"></script>
+  <script src="js/worker-factory.js"></script>
+  <script src="js/get-local-worker.js"></script>
+  <script src="js/set-local-worker.js"></script>
+  <script src="js/create-worker.js"></script>
+  <script src="js/add-worker.js"></script>
+  <script src="js/generate-table.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>
