@@ -1,0 +1,1 @@
+const validateName = (str) => str.trim().length > 2;

@@ -1,9 +1,9 @@
 class NewWorker {
   constructor(firstName, lastName, position) {
-    this.id = new Date().getMilliseconds();
+    this.id = (getWorker() === null) ? 1 : getWorker().length + 1;
     this.firstName = firstName;
     this.lastName = lastName;
     this.position = position;
-    this.createdDate = Date.now();
+    this.createdDate = (new Date().getMonth() + 1) + '/' + new Date().getDate() + '/' + new Date().getFullYear();
   }
 }

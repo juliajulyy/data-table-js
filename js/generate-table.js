@@ -3,18 +3,20 @@ const operateDelete = `<button type="button" class="btn btn-outline-danger">Dele
 
 const displayWorker = () => {
   const workers = getWorker();
-  const tblBody = document.getElementById("tbody");
+  const tblBody = document.querySelector("#tbody");
   
-  workers.map(item => {
-    const tblRow = document.createElement("tr");
-    Object.values(item).map(value => {
-      const cell = document.createElement("td")
-      cell.textContent = value;
-      tblRow.appendChild(cell);
+  if (workers !== null) {
+    workers.map(item => {
+      const tblRow = document.createElement("tr");
+      Object.values(item).map(value => {
+        const cell = document.createElement("td")
+        cell.textContent = value;
+        tblRow.appendChild(cell);
+      });
+      tblRow.insertAdjacentHTML("beforeEnd", `<td class="table__btn">${operateEdit + operateDelete}</td>`);
+      tblBody.appendChild(tblRow);
     });
-    tblRow.insertAdjacentHTML("beforeEnd", `<td class="table__btn">${operateEdit + operateDelete}</td>`);
-    tblBody.appendChild(tblRow);
-  });
+  }
   
   return tblBody;
 }

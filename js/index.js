@@ -38,7 +38,6 @@ const main = () => {
 
   addNewbtn.addEventListener('click', () => hideModal(false));
   closeIcon.addEventListener('click', () => {
-    console.log('close clicked')
     hideModal(true);
   });
   window.addEventListener('click', () => {
@@ -48,4 +47,4 @@ const main = () => {
   displayWorker();
 }
 
-main();
+window.addEventListener('load', main);

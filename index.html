@@ -44,20 +44,19 @@
           <div class="input-group-prepend">
             <span class="input-group-text">First Name</span>
           </div>
-          <input type="text" id="first-name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" id="first-name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text">Last Name</span>
           </div>
-          <input type="text" id="last-name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" id="last-name" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
         </div>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
             <div class="btn modal__btn-name">Position</div>
           </div>
           <select class="custom-select" id="inputGroupSelect">
-            <option></option>
             <option>Front-end dev</option>
             <option>Back-end dev</option>
             <option>Full stack dev</option>
@@ -70,13 +69,14 @@
         </div>
       </а>
       <div class="modal-footer">
-        <button type="button" id="modal-save-btn" class="btn btn-primary" onclick="addWorker()">
+        <button type="submit" id="modal-save-btn" class="btn btn-primary" onclick="addWorker()">
           Save changes
         </button>
       </div>
     </div>
   </div>
 
+  <script src="js/validation.js"></script>
   <script src="js/worker-factory.js"></script>
   <script src="js/get-local-worker.js"></script>
   <script src="js/set-local-worker.js"></script>
