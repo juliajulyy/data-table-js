@@ -44,7 +44,10 @@ const main = () => {
     if (event.target === modal) toggleModal(false)
   });
 
-  savebtn.addEventListener('click', () => addWorker());
+  savebtn.addEventListener('click', () => {
+    const newWorker = createWorker();
+    setWorker(newWorker);
+  });
 
   displayWorkers();
 }

@@ -1,4 +1,11 @@
-const setWorker = (workers) => {
+const setWorker = (newWorker) => {
+
+  const receivedWorkers = getWorker();
+
+  const workers = [
+    ...(receivedWorkers === null) ? [] : receivedWorkers,
+    newWorker
+  ]
 
   const workersJson = JSON.stringify({
     workers
