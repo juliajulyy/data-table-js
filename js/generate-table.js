@@ -1,19 +1,19 @@
-const operateEdit = `<button type="button" class="btn btn-outline-primary">Edit</button>`;
-const operateDelete = `<button type="button" class="btn btn-outline-danger">Delete</button>`;
+const btnEdit = `<button type="button" class="btn btn-outline-primary">Edit</button>`;
+const btnDelete = `<button type="button" class="btn btn-outline-danger">Delete</button>`;
 
-const displayWorker = () => {
+const displayWorkers = () => {
   const workers = getWorker();
   const tblBody = document.querySelector("#tbody");
   
   if (workers !== null) {
-    workers.map(item => {
+    workers.forEach(item => {
       const tblRow = document.createElement("tr");
-      Object.values(item).map(value => {
+      Object.values(item).forEach(value => {
         const cell = document.createElement("td")
         cell.textContent = value;
         tblRow.appendChild(cell);
       });
-      tblRow.insertAdjacentHTML("beforeEnd", `<td class="table__btn">${operateEdit + operateDelete}</td>`);
+      tblRow.insertAdjacentHTML("beforeEnd", `<td class="table__btn">${btnEdit + btnDelete}</td>`);
       tblBody.appendChild(tblRow);
     });
   }

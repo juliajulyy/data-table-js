@@ -34,17 +34,19 @@ const main = () => {
   const modal = document.querySelector('#modal-window');
   const addNewbtn = document.querySelector("#add-new");
   const closeIcon = document.querySelector(".close");
-  const hideModal = (willHide) => modal.style.display = willHide ? 'none' : 'block';
+  const savebtn = document.querySelector("#modal-save-btn");
 
-  addNewbtn.addEventListener('click', () => hideModal(false));
-  closeIcon.addEventListener('click', () => {
-    hideModal(true);
-  });
+  const toggleModal = (isDisplay) => modal.style.display = isDisplay ? 'block' : 'none';
+
+  addNewbtn.addEventListener('click', () => toggleModal(true));
+  closeIcon.addEventListener('click', () => toggleModal(false));
   window.addEventListener('click', () => {
-    if (event.target === modal) hideModal(true)
+    if (event.target === modal) toggleModal(false)
   });
 
-  displayWorker();
+  savebtn.addEventListener('click', () => addWorker());
+
+  displayWorkers();
 }
 
 window.addEventListener('load', main);
