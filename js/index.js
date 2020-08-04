@@ -35,6 +35,8 @@ const main = () => {
   const addNewbtn = document.querySelector("#add-new");
   const closeIcon = document.querySelector(".close");
   const savebtn = document.querySelector("#modal-save-btn");
+  const deleteBtn = document.querySelectorAll(".delete-btn");
+  console.log(deleteBtn);
 
   const toggleModal = (isDisplay) => modal.style.display = isDisplay ? 'block' : 'none';
 
@@ -47,6 +49,10 @@ const main = () => {
   savebtn.addEventListener('click', () => {
     const newWorker = createWorker();
     setWorker(newWorker);
+  });
+
+  Array.from(deleteBtn).forEach(btn => {
+    btn.addEventListener('click', () => alert('hi'))
   });
 
   displayWorkers();
