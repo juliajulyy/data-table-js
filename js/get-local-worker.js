@@ -1,4 +1,4 @@
-const getWorker = () => {
+const getWorkers = () => {
   const previousWorkers = localStorage.getItem('workers');
   
   if (previousWorkers !== null) {

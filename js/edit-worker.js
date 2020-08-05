@@ -1,6 +1,6 @@
 const editWorker = (event) => {
   const btnIndex = parseInt(event.target.dataset.index, 10);
-  const workers = getWorker();
+  const workers = getWorkers();
 
   const [filteredWorker] = workers.filter(worker => worker.id === btnIndex);
   const workerIndex = workers.findIndex(worker => worker.id === btnIndex);

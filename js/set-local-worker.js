@@ -1,6 +1,6 @@
 const setWorker = (newWorker) => {
 
-  const receivedWorkers = getWorker();
+  const receivedWorkers = getWorkers();
 
   const workers = [
     ...(receivedWorkers === null) ? [] : receivedWorkers,

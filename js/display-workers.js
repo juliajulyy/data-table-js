@@ -1,5 +1,5 @@
 const displayWorkers = () => {
-  const workers = getWorker();
+  const workers = getWorkers();
   const tblBody = document.querySelector("#tbody");
 
   tblBody.innerHTML = '';
