@@ -1,5 +1,5 @@
-const deleteWorker = (e) => {
-  const btnIndex = parseInt(e.target.dataset.index, 10);
+const deleteWorker = (event) => {
+  const btnIndex = parseInt(event.target.dataset.index, 10);
   const workers = getWorker();
   const filteredWorkers = workers.filter(worker => worker.id !== btnIndex);
   
@@ -7,5 +7,5 @@ const deleteWorker = (e) => {
 
   localStorage.setItem('workers', workersJson);
 
-  displayWorkers();
+  document.location.reload();
 }

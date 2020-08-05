@@ -30,33 +30,20 @@ const main = () => {
   //   ...(workers === null) ? [] : workers,
   //   ...workers,
   // ]);
-
-  const modal = document.querySelector('#modal-window');
   const addNewbtn = document.querySelector("#add-new");
-  const closeIcon = document.querySelector(".close");
-  const savebtn = document.querySelector("#modal-save-btn");
-  // const deleteBtns = document.querySelectorAll(".delete-btn");
-  // console.log(deleteBtns);
-
-  const toggleModal = (isDisplay) => modal.style.display = isDisplay ? 'block' : 'none';
-
-  addNewbtn.addEventListener('click', () => toggleModal(true));
-  closeIcon.addEventListener('click', () => toggleModal(false));
-  window.addEventListener('click', () => {
-    if (event.target === modal) toggleModal(false)
-  });
-
-  savebtn.addEventListener('click', () => {
-    const newWorker = createWorker();
-    setWorker(newWorker);
-  });
+  addNewbtn.addEventListener('click', addWorker);
 
   displayWorkers();
 
   const deleteBtns = document.querySelectorAll(".delete-btn");
-
   Array.from(deleteBtns).forEach(btn => {
     btn.addEventListener('click', deleteWorker);
+  });
+
+  const editBtns = document.querySelectorAll(".edit-btn");
+
+  Array.from(editBtns).forEach(btn => {
+    btn.addEventListener('click', editWorker);
   });
 }
 

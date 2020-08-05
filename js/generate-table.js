@@ -20,6 +20,7 @@ const displayWorkers = () => {
       const btnEdit = document.createElement("button");
       btnEdit.innerHTML = "Edit";
       btnEdit.className = "btn btn-outline-primary edit-btn";
+      btnEdit.dataset.index = item.id;
     
       const btnDelete = document.createElement("button");
       btnDelete.innerHTML = "Delete";
