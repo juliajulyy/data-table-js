@@ -35,8 +35,8 @@ const main = () => {
   const addNewbtn = document.querySelector("#add-new");
   const closeIcon = document.querySelector(".close");
   const savebtn = document.querySelector("#modal-save-btn");
-  const deleteBtn = document.querySelectorAll(".delete-btn");
-  console.log(deleteBtn);
+  // const deleteBtns = document.querySelectorAll(".delete-btn");
+  // console.log(deleteBtns);
 
   const toggleModal = (isDisplay) => modal.style.display = isDisplay ? 'block' : 'none';
 
@@ -51,11 +51,13 @@ const main = () => {
     setWorker(newWorker);
   });
 
-  Array.from(deleteBtn).forEach(btn => {
-    btn.addEventListener('click', () => alert('hi'))
-  });
-
   displayWorkers();
+
+  const deleteBtns = document.querySelectorAll(".delete-btn");
+
+  Array.from(deleteBtns).forEach(btn => {
+    btn.addEventListener('click', deleteWorker);
+  });
 }
 
 window.addEventListener('load', main);

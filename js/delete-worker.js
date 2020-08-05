@@ -1,4 +1,11 @@
-const deleteWorker = () => {
+const deleteWorker = (e) => {
+  const btnIndex = parseInt(e.target.dataset.index, 10);
   const workers = getWorker();
-  // btnDelete.addEventListener('click', () => alert('hi'));
+  const filteredWorkers = workers.filter(worker => worker.id !== btnIndex);
+  
+  const workersJson = JSON.stringify(filteredWorkers);
+
+  localStorage.setItem('workers', workersJson);
+
+  displayWorkers();
 }

@@ -1,6 +1,6 @@
 class NewWorker {
   constructor(firstName, lastName, position) {
-    this.id = (getWorker() === null) ? 1 : getWorker().length + 1;
+    this.id = Math.round(Math.random() * new Date().getMilliseconds());
     this.firstName = firstName;
     this.lastName = lastName;
     this.position = position;

@@ -7,9 +7,7 @@ const setWorker = (newWorker) => {
     newWorker
   ]
 
-  const workersJson = JSON.stringify({
-    workers
-  });
+  const workersJson = JSON.stringify(workers);
 
   return localStorage.setItem('workers', workersJson);
 }

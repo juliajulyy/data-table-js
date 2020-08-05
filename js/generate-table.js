@@ -1,6 +1,8 @@
 const displayWorkers = () => {
   const workers = getWorker();
   const tblBody = document.querySelector("#tbody");
+
+  tblBody.innerHTML = '';
   
   if (workers !== null) {
     workers.forEach(item => {
@@ -21,7 +23,8 @@ const displayWorkers = () => {
     
       const btnDelete = document.createElement("button");
       btnDelete.innerHTML = "Delete";
-      btnDelete.className = "btn btn-outline-danger delete-btn"; 
+      btnDelete.className = "btn btn-outline-danger delete-btn";
+      btnDelete.dataset.index = item.id;
 
       btnCol.appendChild(btnEdit);
       btnCol.appendChild(btnDelete);
@@ -30,10 +33,5 @@ const displayWorkers = () => {
       tblBody.appendChild(tblRow);
     });
   }
-  document.querySelectorAll('.btn-delete').forEach(function(el) {
-    el.addEventListener('click', () => alert('hi'))
-    console.log(el);
-  });
-
   return tblBody;
 }
