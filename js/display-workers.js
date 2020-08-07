@@ -15,7 +15,9 @@ const displayWorkers = () => {
       });
 
       const btnCol = document.createElement("td");
-      btnCol.className = "table__btn";
+
+      const btnWrapper = document.createElement("div")
+      btnWrapper.className = "table__btn";
 
       const btnEdit = document.createElement("button");
       btnEdit.innerHTML = "Edit";
@@ -27,8 +29,10 @@ const displayWorkers = () => {
       btnDelete.className = "btn btn-outline-danger delete-btn";
       btnDelete.dataset.index = item.id;
 
-      btnCol.appendChild(btnEdit);
-      btnCol.appendChild(btnDelete);
+      btnWrapper.appendChild(btnEdit);
+      btnWrapper.appendChild(btnDelete);
+      
+      btnCol.appendChild(btnWrapper);
       tblRow.appendChild(btnCol);
 
       tblBody.appendChild(tblRow);

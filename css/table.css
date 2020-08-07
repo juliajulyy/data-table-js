@@ -5,5 +5,9 @@
 .table__btn {
   display: flex;
   justify-content: space-between;
-  max-width: 200px;
+  max-width: 180px;
+}
+
+.table__btn .btn {
+  margin-right: 5px;
 }
