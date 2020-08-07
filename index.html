@@ -20,11 +20,11 @@
       <div class="filters__dropdown">
         <button class="filters__btn" id="drop-btn">column</button>
           <ul id="dropdown" class="filters__dropdown-cont">
-            <li>id</li>
-            <li>first name</li>
-            <li>last name</li>
-            <li>position</li>
-            <li>created date</li>
+            <li value="id">id</li>
+            <li value="firstName">first name</li>
+            <li value="lastName">last name</li>
+            <li value="position">position</li>
+            <li value="createdDate">created date</li>
           </ul>
         </div>
       <div class="filters__btn filters__equal"><span>=</span></div>
@@ -63,7 +63,7 @@
     </tbody>
   </table>
   
-  <button id="add-new" type="button" class="btn btn-primary btn-success float-left" data-toggle="modal" data-target="#exampleModal">
+  <button id="add-new" type="button" class="btn btn-primary btn-success float-right" data-toggle="modal" data-target="#exampleModal">
     Add New
   </button>
 
@@ -121,6 +121,7 @@
   <script src="js/display-workers.js"></script>
   <script src="js/delete-worker.js"></script>
   <script src="js/edit-worker.js"></script>
+  <script src="js/filter-in-column.js"></script>
   <script src="js/index.js"></script>
 </body>
 </html>

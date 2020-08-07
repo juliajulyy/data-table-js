@@ -6,16 +6,24 @@
 
 .filters__block-left, .filters__block-right {
   display: flex;
-  justify-content: space-between;
 }
 
 .filters__block-left {
-  width: 410px;
+  justify-content: left;
+}
+
+.filters__block-left > * {
+  margin-right: 5px;
 }
 
 .filters__block-right {
-  width: 263px;
+  justify-content: right;
 }
+
+.filters__block-right > * {
+  margin-left: 5px;
+}
+
 
 .filters__btn, .filters__close {
   background-color: white;
