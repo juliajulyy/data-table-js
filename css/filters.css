@@ -31,7 +31,7 @@
 
 .filters__btn {
   border-radius: 5px;
- 
+  height: 100%;
 }
 
 .filters__close  {
@@ -55,4 +55,36 @@
   border-radius: 5px 0 0 5px;
   padding-left: 10px;
   width: 175px;
+}
+
+
+.filters__dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.filters__dropdown-cont {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 145px;
+  margin-top: 5px;
+  overflow: auto;
+  border-radius: 5px;
+  box-shadow: 0 3px 7px 0px rgba(0,0,0,0.5);
+  padding: 10px;
+  z-index: 1;
+}
+
+.filters__dropdown-cont li {
+  padding: 2px 5px;
+  text-decoration: none;
+}
+
+.filters__dropdown li:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
 }

@@ -24,12 +24,6 @@ const main = () => {
   //   }
   // ];
 
-  // const workers = getWorker();
-
-  // setWorker([
-  //   ...(workers === null) ? [] : workers,
-  //   ...workers,
-  // ]);
   const addNewbtn = document.querySelector("#add-new");
   addNewbtn.addEventListener('click', addWorker);
 
@@ -45,6 +39,9 @@ const main = () => {
   Array.from(editBtns).forEach(btn => {
     btn.addEventListener('click', editWorker);
   });
+
+  const colBtn = document.querySelector("#drop-btn");
+  colBtn.addEventListener('click', openDropdown);
 }
 
 window.addEventListener('load', main);

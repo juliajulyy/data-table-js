@@ -17,7 +17,16 @@
   <div class="filters">
     <div class="filters__block-left">
       <button class="filters__btn">size</button>
-      <button class="filters__btn">column</button>
+      <div class="filters__dropdown">
+        <button class="filters__btn" id="drop-btn">column</button>
+          <ul id="dropdown" class="filters__dropdown-cont">
+            <li>id</li>
+            <li>first name</li>
+            <li>last name</li>
+            <li>position</li>
+            <li>created date</li>
+          </ul>
+        </div>
       <div class="filters__btn filters__equal"><span>=</span></div>
       <div class="filters__input-group">
         <input type="text" class="filters__input">
@@ -103,6 +112,7 @@
     </div>
   </div>
 
+  <script src="js/dropdown.js"></script>
   <script src="js/worker-factory.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/get-local-worker.js"></script>
