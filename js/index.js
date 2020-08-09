@@ -45,7 +45,7 @@ const main = () => {
     }
   ];
 
-  if (!localStorage["workers"]) {
+  if (!localStorage.getItem('workers')) {
     workers.forEach(item => setWorker(item))
   }
 
@@ -53,17 +53,6 @@ const main = () => {
   addNewbtn.addEventListener('click', addWorker);
 
   displayWorkers(getWorkers());
-
-  // const deleteBtns = document.querySelectorAll(".delete-btn");
-  // Array.from(deleteBtns).forEach(btn => {
-  //   btn.addEventListener('click', deleteWorker);
-  // });
-
-  // const editBtns = document.querySelectorAll(".edit-btn");
-
-  // Array.from(editBtns).forEach(btn => {
-  //   btn.addEventListener('click', editWorker);
-  // });
 
   const colBtn = document.querySelector("#drop-btn");
   colBtn.addEventListener('click', openDropdown);
