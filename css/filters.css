@@ -70,7 +70,6 @@
   width: 175px;
 }
 
-
 .filters__dropdown {
   position: relative;
   display: inline-block;
@@ -100,4 +99,17 @@
 
 .show {
   display: block;
+}
+
+.filters__arrow {
+  height: 20px;
+}
+
+.initial__arrow {
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+.initial__arrow:hover {
+  opacity: 1;
 }
