@@ -31,7 +31,7 @@
   padding: 0 10px;
 }
 
-.filters__btn:focus, .filters__close:focus, .filters__input:focus {
+.filters__btn:focus, .filters__input:focus {
   outline: 0;
   border-color: #007bff;
   box-shadow: 0 0 2px #007bff;
@@ -43,8 +43,13 @@
 }
 
 .filters__close  {
-  height: 100%;
   border-radius: 0 5px 5px 0;
+  height: 100%;
+}
+
+.filters__close:focus {
+  outline: 0;
+  color: red;
 }
 
 .filters__equal {

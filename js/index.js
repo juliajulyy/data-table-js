@@ -27,7 +27,7 @@ const main = () => {
   const addNewbtn = document.querySelector("#add-new");
   addNewbtn.addEventListener('click', addWorker);
 
-  displayWorkers();
+  displayWorkers(getWorkers());
 
   const deleteBtns = document.querySelectorAll(".delete-btn");
   Array.from(deleteBtns).forEach(btn => {

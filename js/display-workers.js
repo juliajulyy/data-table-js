@@ -1,10 +1,19 @@
-const displayWorkers = () => {
-  const workers = getWorkers();
+const displayWorkers = (workers) => {
   const tblBody = document.querySelector("#tbody");
 
   tblBody.innerHTML = '';
-  
-  if (workers !== null) {
+
+  if (workers.length === 0) {
+    const tblRow = document.createElement("tr");
+    const td = document.createElement("td");
+
+    td.setAttribute("colspan", 6);
+    td.innerHTML = 'Nothing was found for your query.';
+
+    tblRow.appendChild(td);
+    tblBody.appendChild(tblRow);
+
+  } else if (workers !== null) {
     workers.forEach(item => {
       const tblRow = document.createElement("tr");
       
