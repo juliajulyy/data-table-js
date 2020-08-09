@@ -20,14 +20,14 @@ const main = () => {
       firstName: "James",
       lastName: "Frazier",
       position: "HR",
-      createdDate: "21/06/2020"
+      createdDate: "06/06/2020"
     },
     {
       id: 4,
       firstName: "Matt",
       lastName: "Smith",
       position: "Back-end dev",
-      createdDate: "11/07/2020"
+      createdDate: "07/17/2020"
     },
     {
       id: 5,
@@ -49,13 +49,10 @@ const main = () => {
     workers.forEach(item => setWorker(item))
   }
 
-  const addNewbtn = document.querySelector("#add-new");
-  addNewbtn.addEventListener('click', addWorker);
+  // const addNewbtn = document.querySelector("#add-new");
+  // addNewbtn.addEventListener('click', addWorker);
 
   displayWorkers(getWorkers());
-
-  const colBtn = document.querySelector("#drop-btn");
-  colBtn.addEventListener('click', openDropdown);
 }
 
 window.addEventListener('load', main);

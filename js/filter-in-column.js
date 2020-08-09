@@ -4,13 +4,16 @@ const dropdowns = document.querySelectorAll("#dropdown li");
 const inputColVal = document.querySelector('#input-col-val');
 const cleanInputs = document.querySelectorAll(".filters__close");
 
-const openDropdown = () => {
+dropBtn.addEventListener('click', () => {
   dropdown.classList.toggle("show");
-}
+});
 
 window.addEventListener('click', (event) => {
-  if (event.target === dropdown) {
-    dropdown.classList.remove("show");
+  console.log(event.target)
+  if (event.target !== dropBtn) {
+    if (dropdown.classList.contains("show")) {
+      dropdown.classList.remove('show');
+    }
   }
 });
 
