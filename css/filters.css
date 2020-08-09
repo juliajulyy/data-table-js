@@ -56,3 +56,16 @@
   padding-left: 10px;
   width: 175px;
 }
+
+.filters__arrow {
+  height: 20px;
+}
+
+.initial__arrow {
+  transform: rotate(45deg);
+  opacity: 0.5;
+}
+
+.initial__arrow:hover {
+  opacity: 1;
+}
