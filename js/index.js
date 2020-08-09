@@ -49,8 +49,8 @@ const main = () => {
     workers.forEach(item => setWorker(item))
   }
 
-  // const addNewbtn = document.querySelector("#add-new");
-  // addNewbtn.addEventListener('click', addWorker);
+  const addNewbtn = document.querySelector("#add-new");
+  addNewbtn.addEventListener('click', addWorker);
 
   displayWorkers(getWorkers());
 }
