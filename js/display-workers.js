@@ -1,4 +1,4 @@
-const displayWorkers = (workers) => {
+const displayWorkers = (workers, operate = true) => {
   const tblBody = document.querySelector("#tbody");
 
   tblBody.innerHTML = '';
