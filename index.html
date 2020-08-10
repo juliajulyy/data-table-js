@@ -42,9 +42,16 @@
           <span>&times;</span>
         </button> 
       </div>
-      <button class="filters__btn">
-        <img src="img/filter-icon.png" alt="filter">
+      <button class="filters__btn filter filter-btn" id="filter-btn">
+        <img src="img/filter-icon.png" alt="filter" class="filters__icon filter-btn" id="filter-icon">
       </button>
+      <ul id="filter-list" class="filters__dropdown-cont">
+        <li value="id">id</li>
+        <li value="firstName">first name</li>
+        <li value="lastName">last name</li>
+        <li value="position">position</li>
+        <li value="createdDate">created date</li>
+      </ul>
     </div>
   </div>
 
@@ -140,6 +147,7 @@
   <script src="js/filter-in-column.js"></script>
   <script src="js/sort-data.js"></script>
   <script src="js/search-by-key.js"></script>
+  <script src="js/hide-column.js"></script>
   <script src="js/index.js"></script>
 </body>
 </html>

@@ -113,3 +113,12 @@
 .initial__arrow:hover {
   opacity: 1;
 }
+
+.filter {
+  padding: 0 7px;
+}
+
+.filters__icon {
+  box-sizing: border-box;
+  width: 20px;
+}
