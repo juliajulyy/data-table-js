@@ -1,6 +1,7 @@
 const filterBtn = document.querySelector('#filter-btn');
 const filterIcon = document.querySelector('#filter-icon');
 const filterList = document.querySelector("#filter-list");
+const filtersDropdown = document.querySelector('#filter-hide');
 
 const ok = document.querySelector('#ok');
 const all = document.querySelector('#all');
@@ -8,6 +9,10 @@ const clear = document.querySelector('#clear');
 
 const inputCheckboxes = document.querySelectorAll("#filter-list input");
 
+window.addEventListener('click', (event) => {
+  if (filtersDropdown.contains(event.target)) return; 
+  return filterList.classList.remove("show");
+});
 
 filterBtn.addEventListener('click', () => {
   filterList.classList.toggle("show");

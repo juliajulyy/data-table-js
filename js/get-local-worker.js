@@ -7,3 +7,9 @@ const getWorkers = () => {
   }
   return null;
 }
+
+const getFilterWorkers = () => {
+  if (localStorage.getItem('sortedWorkers')) {
+    return JSON.parse(localStorage.getItem('sortedWorkers'));
+  } else return getWorkers();
+}

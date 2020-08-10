@@ -7,7 +7,7 @@ const transfDate = (worker) => {
 }
 
 const sortWorkers = (key) => {
-  workers = getWorkers();
+  const workers = getFilterWorkers();
 
   if (key === 'id') {
     return workers.sort((worker1, worker2) => parseInt(worker1.id) - parseInt(worker2.id));
@@ -15,9 +15,11 @@ const sortWorkers = (key) => {
     return workers.sort((worker1, worker2) => transfDate(worker1) - transfDate(worker2));
   } else {
     return workers.sort((worker1, worker2) => {
-      if (worker1[key] > worker2[key]) return 1;
-      else if (worker1[key] < worker2[key]) return -1;
-      else if (worker1[key] === worker2[key]) return 0;
+      const w1 = worker1[key].toLowerCase();
+      const w2 = worker2[key].toLowerCase();
+      if (w1 > w2) return 1;
+      else if (w1 < w2) return -1;
+      else if (w1 === w2) return 0;
     });
   }
 }

@@ -36,10 +36,10 @@ const displayHeader = (workers, operate) => {
       if (tableHeaders.hasOwnProperty(key)) {
         createThead(key);
       }
-      if (operate === true) {
-        createOperateTh();
-      }
     })
+    if (operate === true) {
+      createOperateTh();
+    }
   }
   tblHead.appendChild(tr);
 

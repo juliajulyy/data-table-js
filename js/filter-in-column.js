@@ -37,14 +37,16 @@ const getColFilterVal = (attr) => {
 
 cleanInputCol.addEventListener('click', () => {
   inputColVal.value = "";
+  localStorage.removeItem('sortedWorkers');
   displayWorkers(getWorkers());
 });
 
 const filterInColumn = (colName, value) => {
   const workers = getWorkers();
 
-  value = (colName === 'id') ? parseInt(value) : value;
-  const filteredWorkers = workers.filter(worker => worker[colName] === value);
+  const newValue = (colName === 'id') ? parseInt(value) : value;
+  const filteredWorkers = workers.filter(worker => worker[colName] === newValue);
 
+  setFilterWorkers(filteredWorkers);
   displayWorkers(filteredWorkers);
 }

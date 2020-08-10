@@ -9,12 +9,13 @@ inputKey.addEventListener('keydown', () => {
 
 cleanInputKey.addEventListener('click', () => {
   inputKey.value = "";
+  localStorage.removeItem('sortedWorkers');
   displayWorkers(getWorkers());
 });
 
 const filterByValue = (workers, string) => {
   return workers.filter(worker =>
-      Object.keys(worker).some(k => worker[k].toString().toLowerCase().includes(string.toLowerCase())));
+    Object.keys(worker).some(k => worker[k].toString().toLowerCase().includes(string.toLowerCase())));
 }
 
 const filterByKey = (value) => {
@@ -22,5 +23,6 @@ const filterByKey = (value) => {
   const filteredWorkers = workers.filter(worker =>
     Object.keys(worker).some(k => worker[k].toString().toLowerCase().includes(value.toLowerCase())));
   
+  setFilterWorkers(filteredWorkers);
   displayWorkers(filteredWorkers);
 }

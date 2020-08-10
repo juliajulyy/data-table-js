@@ -11,3 +11,7 @@ const setWorker = (newWorker) => {
 
   return localStorage.setItem('workers', workersJson);
 }
+
+const setFilterWorkers = (workers) => {
+  localStorage.setItem('sortedWorkers', JSON.stringify(workers));
+}

@@ -52,6 +52,8 @@ const main = () => {
   const addNewbtn = document.querySelector("#add-new");
   addNewbtn.addEventListener('click', addWorker);
 
+  localStorage.removeItem('sortedWorkers');
+
   displayWorkers(getWorkers());
 }
 
