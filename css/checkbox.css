@@ -7,7 +7,7 @@
   box-shadow: 0 3px 7px 0px rgba(0,0,0,0.5);
   margin-top: 5px;
   padding: 15px;
-  width: 400px;
+  width: 380px;
   z-index: 1;
 }
 
@@ -23,9 +23,16 @@
 }
 
 .checkbox__block-btn div {
-  margin-right: 50px;
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
 }
 
 .checkbox__block-btn span {
-  margin-left: 10px;
+  margin-left: 5px;
+  padding: 2px 7px;
+}
+
+.checkbox__block-btn span:hover {
+  color:  #007bff;
 }
