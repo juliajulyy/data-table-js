@@ -2,14 +2,13 @@ const dropBtn = document.querySelector("#drop-btn");
 const dropdown = document.querySelector("#dropdown");
 const dropdowns = document.querySelectorAll("#dropdown li");
 const inputColVal = document.querySelector('#input-col-val');
-const cleanInputs = document.querySelectorAll(".filters__close");
+const cleanInputCol = document.querySelector("#clean-column");
 
 dropBtn.addEventListener('click', () => {
   dropdown.classList.toggle("show");
 });
 
 window.addEventListener('click', (event) => {
-  console.log(event.target)
   if (event.target !== dropBtn) {
     if (dropdown.classList.contains("show")) {
       dropdown.classList.remove('show');
@@ -36,11 +35,9 @@ const getColFilterVal = (attr) => {
   });
 }
 
-Array.from(cleanInputs).forEach(item => {
-  item.addEventListener('click', () => {
-    inputColVal.value = "";
-    displayWorkers(getWorkers());
-  });
+cleanInputCol.addEventListener('click', () => {
+  inputColVal.value = "";
+  displayWorkers(getWorkers());
 });
 
 const filterInColumn = (colName, value) => {

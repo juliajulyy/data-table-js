@@ -43,6 +43,7 @@
 }
 
 .filters__close  {
+  border-left: none;
   border-radius: 0 5px 5px 0;
   height: 100%;
 }
@@ -64,7 +65,6 @@
 
 .filters__input {
   border: 1px solid rgb(146, 146, 146);
-  border-right: none;
   border-radius: 5px 0 0 5px;
   padding-left: 10px;
   width: 175px;
