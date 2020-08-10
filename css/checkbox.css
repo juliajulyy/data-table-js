@@ -1,0 +1,31 @@
+.checkbox {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 3px 7px 0px rgba(0,0,0,0.5);
+  margin-top: 5px;
+  padding: 15px;
+  width: 400px;
+  z-index: 1;
+}
+
+.checkbox__inputs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkbox__block-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.checkbox__block-btn div {
+  margin-right: 50px;
+}
+
+.checkbox__block-btn span {
+  margin-left: 10px;
+}

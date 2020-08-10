@@ -6,10 +6,10 @@ filterBtn.addEventListener('click', () => {
   filterList.classList.toggle("show");
 });
 
-window.addEventListener('click', (event) => {
-  if ((event.target !== filterBtn) && (event.target !== filterIcon)) {
-    if (filterList.classList.contains("show")) {
-      filterList.classList.remove('show');
-    }
-  }
-});
+// window.addEventListener('click', (event) => {
+//   if ( (event.target === filterList)) {
+//     if (filterList.classList.contains("show")) {
+//       filterList.classList.remove('show');
+//     }
+//   }
+// });
