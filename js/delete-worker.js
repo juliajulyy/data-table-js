@@ -7,5 +7,5 @@ const deleteWorker = (event) => {
 
   localStorage.setItem('workers', workersJson);
 
-  document.location.reload();
+  displayWorkers(getWorkers());
 }
