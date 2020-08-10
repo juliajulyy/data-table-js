@@ -1,7 +1,44 @@
 const displayWorkers = (workers, operate = true) => {
-  const tblBody = document.querySelector("#tbody");
+  const table = document.querySelector('#table');
+  const tblHead = document.createElement('thead');
+  const tblBody = document.createElement('tbody');
+  const tr = document.createElement('tr');
 
-  tblBody.innerHTML = '';
+  tblHead.className = "thead-light";
+  table.innerHTML = '';
+
+  const tableHeaders = {
+    id: 'ID',
+    firstName: 'First Name',
+    lastName: 'Last Name',
+    position: 'Position',
+    createdDate: 'Created Date',
+    operate: 'Operate'
+  }
+
+  Object.keys(workers[0]).forEach(key => {
+    if (tableHeaders.hasOwnProperty(key)) {
+      const th = document.createElement('th');
+      const span = document.createElement('span');
+      span.innerHTML = tableHeaders[key];
+      const img = document.createElement('img');
+      img.className = 'filters__arrow initial__arrow';
+      img.src = 'img/sort-arrow.png';
+      th.appendChild(span);
+      th.appendChild(img);
+      tr.appendChild(th);
+    }
+  })
+
+  if (operate === true) {
+    const thOperate = document.createElement('th');
+    thOperate.innerHTML = tableHeaders.operate;
+    tr.appendChild(thOperate);
+  }
+
+  tblHead.appendChild(tr);
+  table.appendChild(tblHead);
+
 
   if (workers.length === 0) {
     const tblRow = document.createElement("tr");
@@ -50,5 +87,6 @@ const displayWorkers = (workers, operate = true) => {
       tblBody.appendChild(tblRow);
     });
   }
-  return tblBody;
+  table.appendChild(tblBody);
+  return table;
 }
