@@ -43,6 +43,18 @@ const setState = (item, i) => {
     displayWorkers(sortWorkers(key).reverse());
     tableHeaderStates[key] = 'desc';
   }
+
+  if ((tableHeaderStates[key] === 'asc') || (tableHeaderStates[key] === 'desc')) {
+    Object.keys(tableHeaderStates).forEach(el => {
+      if (el !== key) tableHeaderStates[el] = 'initial';
+    });
+    Array.from(arrowsSort).forEach(el => {
+      if (el !== item) {
+        el.src = 'img/sort-arrow.png';
+        el.classList.add('initial__arrow');
+      }
+    });
+  }
 }
 
 Array.from(arrowsSort).forEach((item, i) => {
