@@ -49,5 +49,6 @@ const filterWorkers = (checkedArr, operate) => {
     })
     filteredWorkers.push(worker);
   })
+  displayHeader(filteredWorkers, operate);
   displayWorkers(filteredWorkers, operate);
 }

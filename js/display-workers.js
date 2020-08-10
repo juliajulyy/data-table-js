@@ -1,42 +1,8 @@
 const displayWorkers = (workers, operate = true) => {
-  const table = document.querySelector('#table');
-  const tblHead = document.createElement('thead');
-  const tblBody = document.createElement('tbody');
-  const tr = document.createElement('tr');
-
-  tblHead.className = "thead-light";
-  table.innerHTML = '';
-
-  const tableHeaders = {
-    id: 'ID',
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    position: 'Position',
-    createdDate: 'Created Date',
-  }
-
-  const createThead = (key) => {
-    const th = document.createElement('th');
-    const span = document.createElement('span');
-    span.innerHTML = tableHeaders[key];
-    const img = document.createElement('img');
-    img.className = 'filters__arrow initial__arrow';
-    img.src = 'img/sort-arrow.png';
-    th.appendChild(span);
-    th.appendChild(img);
-    tr.appendChild(th);
-  }
-
-  const createOperateTh = () => {
-    const thOperate = document.createElement('th');
-    thOperate.innerHTML = 'Operate';
-    tr.appendChild(thOperate);
-  }
+  const tblBody = document.querySelector('#tbody');
+  tblBody.innerHTML = '';
 
   if (workers.length === 0) {
-    Object.keys(tableHeaders).forEach(key => {
-      createThead(key);
-    })
     const tblRow = document.createElement("tr");
     const td = document.createElement("td");
 
@@ -47,15 +13,6 @@ const displayWorkers = (workers, operate = true) => {
     tblBody.appendChild(tblRow);
 
   } else if (workers !== null) {
-    Object.keys(workers[0]).forEach(key => {
-      if (tableHeaders.hasOwnProperty(key)) {
-        createThead(key);
-      }
-    })
-  
-    if (operate === true) {
-      createOperateTh();
-    }
     workers.forEach(item => {
       const tblRow = document.createElement("tr");
       
@@ -92,10 +49,5 @@ const displayWorkers = (workers, operate = true) => {
       tblBody.appendChild(tblRow);
     });
   }
-  tblHead.appendChild(tr);
-
-  table.appendChild(tblHead);
-  table.appendChild(tblBody);
-
-  return table;
+  return tblBody;
 }
