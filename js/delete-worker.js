@@ -1,11 +1,21 @@
-const deleteWorker = (event) => {
-  const btnIndex = parseInt(event.target.dataset.index, 10);
-  const workers = getWorkers();
-  const filteredWorkers = workers.filter(worker => worker.id !== btnIndex);
-  
-  const workersJson = JSON.stringify(filteredWorkers);
+const DeleteWorker = (function() {
+  const deleteWorker = (event) => {
+    const btnIndex = parseInt(event.target.dataset.index, 10);
+    const workers = GetLocalWorker.getWorkers();
+    const filteredWorkers = workers.filter(worker => worker.id !== btnIndex);
 
-  localStorage.setItem('workers', workersJson);
+    console.log(filteredWorkers)
 
-  displayWorkers(getWorkers());
-}
+    const workersJson = JSON.stringify(filteredWorkers);
+
+    localStorage.setItem('workers', workersJson);
+
+    if (localStorage.getItem('sortedWorkers')) {
+      SetLocalWorker.setFilterWorkers(filteredWorkers);
+      console.log('set')
+    }
+
+    DisplayWorkers.displayWorkers(GetLocalWorker.getFilterWorkers());
+  }
+  return { deleteWorker }
+})();

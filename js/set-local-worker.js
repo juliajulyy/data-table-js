@@ -1,17 +1,24 @@
-const setWorker = (newWorker) => {
+const SetLocalWorker = (function () {
+  const setWorker = (newWorker) => {
 
-  const receivedWorkers = getWorkers();
+    const receivedWorkers = GetLocalWorker.getWorkers();
 
-  const workers = [
-    ...(receivedWorkers === null) ? [] : receivedWorkers,
-    newWorker
-  ]
+    const workers = [
+      ...(receivedWorkers === null) ? [] : receivedWorkers,
+      newWorker
+    ]
 
-  const workersJson = JSON.stringify(workers);
+    const workersJson = JSON.stringify(workers);
 
-  return localStorage.setItem('workers', workersJson);
-}
+    return localStorage.setItem('workers', workersJson);
+  }
 
-const setFilterWorkers = (workers) => {
-  localStorage.setItem('sortedWorkers', JSON.stringify(workers));
-}
+  const setFilterWorkers = (workers) => {
+    localStorage.setItem('sortedWorkers', JSON.stringify(workers));
+  }
+
+  return {
+    setWorker,
+    setFilterWorkers
+  }
+})();
