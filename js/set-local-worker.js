@@ -1,24 +1,19 @@
-const SetLocalWorker = (function () {
-  const setWorker = (newWorker) => {
+import { getWorkers } from './get-local-worker';
 
-    const receivedWorkers = GetLocalWorker.getWorkers();
+export const setWorker = (newWorker) => {
 
-    const workers = [
-      ...(receivedWorkers === null) ? [] : receivedWorkers,
-      newWorker
-    ]
+  const receivedWorkers = getWorkers();
 
-    const workersJson = JSON.stringify(workers);
+  const workers = [
+    ...(receivedWorkers === null) ? [] : receivedWorkers,
+    newWorker
+  ]
 
-    return localStorage.setItem('workers', workersJson);
-  }
+  const workersJson = JSON.stringify(workers);
 
-  const setFilterWorkers = (workers) => {
-    localStorage.setItem('sortedWorkers', JSON.stringify(workers));
-  }
+  return localStorage.setItem('workers', workersJson);
+}
 
-  return {
-    setWorker,
-    setFilterWorkers
-  }
-})();
+export const setFilterWorkers = (workers) => {
+  localStorage.setItem('sortedWorkers', JSON.stringify(workers));
+}

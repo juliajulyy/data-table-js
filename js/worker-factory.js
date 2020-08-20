@@ -1,4 +1,4 @@
-class NewWorker {
+export class NewWorker {
   constructor(firstName, lastName, position) {
     this.id = Math.round(Math.random() * new Date().getMilliseconds());
     this.firstName = firstName;

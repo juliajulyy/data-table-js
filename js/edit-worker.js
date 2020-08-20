@@ -1,41 +1,43 @@
-const EditWorker = (function () {
-  const editWorker = (event) => {
-    const btnIndex = parseInt(event.target.dataset.index, 10);
-    const workers = GetLocalWorker.getWorkers();
+import { getWorkers } from './get-local-worker';
+import { setFilterWorkers} from './set-local-worker'
+import { displayWorkers } from './display-workers';
+import { savebtn, toggleModal } from './modal';
 
-    const [filteredWorker] = workers.filter(worker => worker.id === btnIndex);
-    const workerIndex = workers.findIndex(worker => worker.id === btnIndex);
+export const editWorker = (event) => {
+  const btnIndex = parseInt(event.target.dataset.index, 10);
+  const workers = getWorkers();
 
-    const firstName = document.querySelector('#first-name');
-    const lastName = document.querySelector('#last-name');
-    const position = document.querySelector('#inputGroupSelect');
+  const [filteredWorker] = workers.filter(worker => worker.id === btnIndex);
+  const workerIndex = workers.findIndex(worker => worker.id === btnIndex);
 
-    firstName.value = filteredWorker.firstName;
-    lastName.value = filteredWorker.lastName;
-    position.value = filteredWorker.position;
+  const firstName = document.querySelector('#first-name');
+  const lastName = document.querySelector('#last-name');
+  const position = document.querySelector('#inputGroupSelect');
 
-    modal.toggleModal(true);
+  firstName.value = filteredWorker.firstName;
+  lastName.value = filteredWorker.lastName;
+  position.value = filteredWorker.position;
 
-    modal.savebtn.addEventListener('click', () => {
-      const firstName = document.querySelector('#first-name').value;
-      const lastName = document.querySelector('#last-name').value;
-      const position = document.querySelector('#inputGroupSelect').value;
+  toggleModal(true);
 
-      filteredWorker.firstName = firstName;
-      filteredWorker.lastName = lastName;
-      filteredWorker.position = position;
+  savebtn.addEventListener('click', () => {
+    const firstName = document.querySelector('#first-name').value;
+    const lastName = document.querySelector('#last-name').value;
+    const position = document.querySelector('#inputGroupSelect').value;
 
-      workers.splice(workerIndex, 1, filteredWorker);
-      const workersJson = JSON.stringify(workers);
+    filteredWorker.firstName = firstName;
+    filteredWorker.lastName = lastName;
+    filteredWorker.position = position;
 
-      localStorage.setItem('workers', workersJson);
+    workers.splice(workerIndex, 1, filteredWorker);
+    const workersJson = JSON.stringify(workers);
 
-      if (localStorage.getItem('sortedWorkers')) {
-        SetLocalWorker.setFilterWorkers(workers);
-      } 
-        
-      DisplayWorkers.displayWorkers(workers);
-    });
-  }
-  return { editWorker }
-})();
+    localStorage.setItem('workers', workersJson);
+
+    if (localStorage.getItem('sortedWorkers')) {
+      setFilterWorkers(workers);
+    } 
+      
+    displayWorkers(workers);
+  });
+}

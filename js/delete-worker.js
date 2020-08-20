@@ -1,21 +1,19 @@
-const DeleteWorker = (function() {
-  const deleteWorker = (event) => {
-    const btnIndex = parseInt(event.target.dataset.index, 10);
-    const workers = GetLocalWorker.getWorkers();
-    const filteredWorkers = workers.filter(worker => worker.id !== btnIndex);
+import { getWorkers, getFilterWorkers } from './get-local-worker';
+import { setFilterWorkers } from './set-local-worker';
+import { displayWorkers } from './display-workers';
 
-    console.log(filteredWorkers)
+export const deleteWorker = (event) => {
+  const btnIndex = parseInt(event.target.dataset.index, 10);
+  const workers = getWorkers();
+  const filteredWorkers = workers.filter(worker => worker.id !== btnIndex);
 
-    const workersJson = JSON.stringify(filteredWorkers);
+  const workersJson = JSON.stringify(filteredWorkers);
 
-    localStorage.setItem('workers', workersJson);
+  localStorage.setItem('workers', workersJson);
 
-    if (localStorage.getItem('sortedWorkers')) {
-      SetLocalWorker.setFilterWorkers(filteredWorkers);
-      console.log('set')
-    }
-
-    DisplayWorkers.displayWorkers(GetLocalWorker.getFilterWorkers());
+  if (localStorage.getItem('sortedWorkers')) {
+    setFilterWorkers(filteredWorkers);
   }
-  return { deleteWorker }
-})();
+
+  displayWorkers(getFilterWorkers());
+}

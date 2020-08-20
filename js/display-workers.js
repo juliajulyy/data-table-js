@@ -1,58 +1,59 @@
-const DisplayWorkers = (function () {
-  const displayWorkers = (workers, operate = true) => {
-    DisplayHeader.displayHeader(workers, operate);
+import { editWorker } from './edit-worker';
+import { deleteWorker } from './delete-worker';
+import { displayHeader } from './display-header';
 
-    const tblBody = document.querySelector('#tbody');
-    tblBody.innerHTML = '';
+export const displayWorkers = (workers, operate = true) => {
+  displayHeader(workers, operate);
 
-    if (workers.length === 0) {
+  const tblBody = document.querySelector('#tbody');
+  tblBody.innerHTML = '';
+
+  if (workers.length === 0) {
+    const tblRow = document.createElement("tr");
+    const td = document.createElement("td");
+
+    td.setAttribute("colspan", 6);
+    td.innerHTML = 'Nothing was found for your query.';
+
+    tblRow.appendChild(td);
+    tblBody.appendChild(tblRow);
+
+  } else if (workers !== null) {
+    workers.forEach(item => {
       const tblRow = document.createElement("tr");
-      const td = document.createElement("td");
-
-      td.setAttribute("colspan", 6);
-      td.innerHTML = 'Nothing was found for your query.';
-
-      tblRow.appendChild(td);
-      tblBody.appendChild(tblRow);
-
-    } else if (workers !== null) {
-      workers.forEach(item => {
-        const tblRow = document.createElement("tr");
-        
-        Object.values(item).forEach(value => {
-          const cell = document.createElement("td")
-          cell.textContent = value;
-          tblRow.appendChild(cell);
-        });
-
-        if (operate === true) {
-          const btnCol = document.createElement("td");
-
-          const btnWrapper = document.createElement("div")
-          btnWrapper.className = "table__btn";
-
-          const btnEdit = document.createElement("button");
-          btnEdit.innerHTML = "Edit";
-          btnEdit.className = "btn btn-outline-primary edit-btn";
-          btnEdit.dataset.index = item.id;
-          btnEdit.addEventListener('click', EditWorker.editWorker);
       
-          const btnDelete = document.createElement("button");
-          btnDelete.innerHTML = "Delete";
-          btnDelete.className = "btn btn-outline-danger delete-btn";
-          btnDelete.dataset.index = item.id;
-          btnDelete.addEventListener('click', DeleteWorker.deleteWorker);
-
-          btnWrapper.appendChild(btnEdit);
-          btnWrapper.appendChild(btnDelete);
-        
-          btnCol.appendChild(btnWrapper);
-          tblRow.appendChild(btnCol);
-        }
-        tblBody.appendChild(tblRow);
+      Object.values(item).forEach(value => {
+        const cell = document.createElement("td")
+        cell.textContent = value;
+        tblRow.appendChild(cell);
       });
-    }
-    return tblBody;
+
+      if (operate === true) {
+        const btnCol = document.createElement("td");
+
+        const btnWrapper = document.createElement("div")
+        btnWrapper.className = "table__btn";
+
+        const btnEdit = document.createElement("button");
+        btnEdit.innerHTML = "Edit";
+        btnEdit.className = "btn btn-outline-primary edit-btn";
+        btnEdit.dataset.index = item.id;
+        btnEdit.addEventListener('click', editWorker);
+    
+        const btnDelete = document.createElement("button");
+        btnDelete.innerHTML = "Delete";
+        btnDelete.className = "btn btn-outline-danger delete-btn";
+        btnDelete.dataset.index = item.id;
+        btnDelete.addEventListener('click', deleteWorker);
+
+        btnWrapper.appendChild(btnEdit);
+        btnWrapper.appendChild(btnDelete);
+      
+        btnCol.appendChild(btnWrapper);
+        tblRow.appendChild(btnCol);
+      }
+      tblBody.appendChild(tblRow);
+    });
   }
-  return { displayWorkers }
-}) ();
+  return tblBody;
+}
