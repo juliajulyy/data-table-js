@@ -1,25 +1,16 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); //installed via npm
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
   entry: './js/index.js',
+  mode: 'development',
 
   output: {
-    path: path.resolve(__dirname, '/dist/js'),
+    path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js'
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.txt$/,
-        use: 'raw-loader'
-      }
-    ]
-  },
-
   plugins: [
-    new HtmlWebpackPlugin({template: './src/index.html'})
+    new HtmlWebpackPlugin({template: './index.html'})
   ]
 }

@@ -60,6 +60,7 @@ const main = () => {
 
   localStorage.removeItem('sortedWorkers');
 
+  console.log(getWorkers());
   displayWorkers(getWorkers());
 
   // init new worker button
