@@ -1,3 +1,9 @@
+import '../css/index.css';
+import '../img/filter-icon.png';
+import '../img/sort-arrow.png';
+import '../img/asc.png';
+import '../img/desc.png';
+
 import { displayWorkers } from './display-workers';
 import { getWorkers } from './get-local-worker';
 import { setWorker } from './set-local-worker';
