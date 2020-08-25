@@ -12,8 +12,8 @@ export const displayHeader = (workers, operate) => {
     lastName: 'Last Name',
     position: 'Position',
     createdDate: 'Created Date',
-  }
-  
+  };
+
   const createThead = (key) => {
     const th = document.createElement('th');
 
@@ -25,29 +25,29 @@ export const displayHeader = (workers, operate) => {
     img.src = 'img/sort-arrow.png';
     img.dataset.key = key;
     img.addEventListener('click', () => setState(img, img.dataset.key, operate));
-    
+
     th.appendChild(span);
     th.appendChild(img);
     tr.appendChild(th);
-  }
+  };
 
   const createOperateTh = () => {
     const thOperate = document.createElement('th');
     thOperate.innerHTML = 'Operate';
     tr.appendChild(thOperate);
-  }
+  };
 
   if (workers.length === 0) {
-    Object.keys(tableHeaders).forEach(key => {
+    Object.keys(tableHeaders).forEach((key) => {
       createThead(key);
-    })
+    });
     createOperateTh();
   } else if (workers !== null) {
-    Object.keys(workers[0]).forEach(key => {
+    Object.keys(workers[0]).forEach((key) => {
       if (tableHeaders.hasOwnProperty(key)) {
         createThead(key);
       }
-    })
+    });
     if (operate === true) {
       createOperateTh();
     }
@@ -56,4 +56,4 @@ export const displayHeader = (workers, operate) => {
   tblHead.appendChild(tr);
 
   return tblHead;
-}
+};

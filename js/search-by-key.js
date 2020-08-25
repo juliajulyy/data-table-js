@@ -7,16 +7,15 @@ const inputKey = document.querySelector('#input-key');
 
 const filterByKey = (value) => {
   const workers = getWorkers();
-  const filteredWorkers = workers.filter(worker =>
-    Object.keys(worker).some(k => worker[k].toString().toLowerCase().includes(value.toLowerCase())));
+  const filteredWorkers = workers.filter((worker) => Object.keys(worker).some((k) => worker[k].toString().toLowerCase().includes(value.toLowerCase())));
 
   setFilterWorkers(filteredWorkers);
   displayWorkers(filteredWorkers);
-}
+};
 
 export const searchTable = () => {
   cleanInputKey.addEventListener('click', () => {
-    inputKey.value = "";
+    inputKey.value = '';
     localStorage.removeItem('sortedWorkers');
     displayWorkers(GetLocalWorker.getWorkers());
   });
@@ -26,4 +25,4 @@ export const searchTable = () => {
       filterByKey(inputKey.value.trim());
     }
   });
-}
+};

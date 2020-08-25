@@ -4,64 +4,52 @@ import { setFilterWorkers } from './set-local-worker';
 import { displayWorkers } from './display-workers';
 
 const filterBtn = document.querySelector('#filter-btn');
-const filterList = document.querySelector("#filter-list");
+const filterList = document.querySelector('#filter-list');
 const filtersDropdown = document.querySelector('#filter-hide');
 
 const ok = document.querySelector('#ok');
 const all = document.querySelector('#all');
 const clear = document.querySelector('#clear');
 
-const inputCheckboxes = document.querySelectorAll("#filter-list input");
+const inputCheckboxes = document.querySelectorAll('#filter-list input');
 
 const filterWorkers = (checkedArr, operate) => {
   const workers = getWorkers();
-  const filteredWorkers = [];
-  workers.forEach(worker => {
-    Object.keys(worker).forEach((key) => {
-      if (!checkedArr.includes(key)) {
-        delete worker[key];
-      };
-    })
-    filteredWorkers.push(worker);
-  })
+  const filteredWorkers = workers.map((worker) => {
+    const filteredWorker = Object.entries(worker).filter(
+      ([workerKey]) => checkedArr.includes(workerKey),
+    );
+    return Object.fromEntries(filteredWorker);
+  });
+
   displayHeader(filteredWorkers, operate);
 
   setFilterWorkers(filteredWorkers);
   displayWorkers(filteredWorkers, operate);
-}
+};
 
 export const selectColumn = () => {
-
   window.addEventListener('click', (event) => {
     if (filtersDropdown.contains(event.target)) return;
-    return filterList.classList.remove("show");
+    filterList.classList.remove('show');
   });
-  
+
   filterBtn.addEventListener('click', () => {
-    filterList.classList.toggle("show");
+    filterList.classList.toggle('show');
   });
-  
+
   all.addEventListener('click', () => {
-    Array.from(inputCheckboxes).forEach(item => item.checked = true);
+    Array.from(inputCheckboxes).forEach((item) => item.checked = true);
   });
-  
+
   clear.addEventListener('click', () => {
-    Array.from(inputCheckboxes).forEach(item => item.checked = false);
-  })
-  
+    Array.from(inputCheckboxes).forEach((item) => item.checked = false);
+  });
+
   ok.addEventListener('click', () => {
-    const checkedArr = [];
-    let operate = false;
-    Array.from(inputCheckboxes).forEach(item => {
-      if (item.checked === true) {
-        if (item.id === 'operate') {
-          operate = true;
-        } else {
-          checkedArr.push(item.id);
-        }
-      }
-    })
+    const operate = Array.from(inputCheckboxes).some((el) => el.id === 'operate' && el.checked);
+    const checkedArr = Array.from(inputCheckboxes).filter((item) => item.checked && item.id !== 'operate');
     filterWorkers(checkedArr, operate);
     filterList.classList.remove('show');
-  })
-}
+  });
+};

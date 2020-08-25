@@ -8,7 +8,7 @@ module.exports = {
 
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
 
   module: {
@@ -19,7 +19,7 @@ module.exports = {
           'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
-        ]
+        ],
       },
       {
         test: /\.(png)$/i,
@@ -27,19 +27,19 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: '[path][name].[ext]'
-            }
+              name: '[path][name].[ext]',
+            },
           },
         ],
       },
-    ]
+    ],
   },
 
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     port: 3000,
     hot: true,
-    liveReload: false
+    liveReload: false,
   },
 
   plugins: [
@@ -47,6 +47,6 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new HtmlWebpackPlugin({template: './index.html'})
-  ]
-}
+    new HtmlWebpackPlugin({ template: './index.html' }),
+  ],
+};

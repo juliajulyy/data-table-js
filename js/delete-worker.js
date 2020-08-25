@@ -5,7 +5,7 @@ import { displayWorkers } from './display-workers';
 export const deleteWorker = (event) => {
   const btnIndex = parseInt(event.target.dataset.index, 10);
   const workers = getWorkers();
-  const filteredWorkers = workers.filter(worker => worker.id !== btnIndex);
+  const filteredWorkers = workers.filter((worker) => worker.id !== btnIndex);
 
   const workersJson = JSON.stringify(filteredWorkers);
 
@@ -16,4 +16,4 @@ export const deleteWorker = (event) => {
   }
 
   displayWorkers(getFilterWorkers());
-}
+};

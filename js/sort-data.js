@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { getFilterWorkers } from './get-local-worker';
 import { displayWorkers } from './display-workers';
 
@@ -8,33 +9,32 @@ const transfDate = (worker) => {
   const dateParts = worker.createdDate.split('/');
   const newDate = new Date(dateParts[2], dateParts[0] - 1, dateParts[1]);
   return newDate.getTime();
-}
+};
 
 const sortWorkers = (key) => {
   const workers = getFilterWorkers();
 
   if (key === 'id') {
-    return workers.sort((worker1, worker2) => parseInt(worker1.id) - parseInt(worker2.id));
-  } else if (key === 'createdDate') {
+    return workers.sort((worker1, worker2) => parseInt(worker1.id, 10) - parseInt(worker2.id, 10));
+  } if (key === 'createdDate') {
     return workers.sort((worker1, worker2) => transfDate(worker1) - transfDate(worker2));
-  } else {
-    return workers.sort((worker1, worker2) => {
-      const w1 = worker1[key].toLowerCase();
-      const w2 = worker2[key].toLowerCase();
-      if (w1 > w2) return 1;
-      else if (w1 < w2) return -1;
-      else if (w1 === w2) return 0;
-    });
   }
-}
+  return workers.sort((worker1, worker2) => {
+    const w1 = worker1[key].toLowerCase();
+    const w2 = worker2[key].toLowerCase();
+    if (w1 > w2) return 1;
+    if (w1 < w2) return -1;
+    return 0;
+  });
+};
 
 const tableHeaderStates = {
   id: 'initial',
   firstName: 'initial',
   lastName: 'initial',
   position: 'initial',
-  createdDate: 'initial'
-}
+  createdDate: 'initial',
+};
 
 export const setState = (item, key, operate = true) => {
   item.classList.remove('initial__arrow');
@@ -50,14 +50,8 @@ export const setState = (item, key, operate = true) => {
   }
 
   if ((tableHeaderStates[key] === 'asc') || (tableHeaderStates[key] === 'desc')) {
-    Object.keys(tableHeaderStates).forEach(el => {
+    Object.keys(tableHeaderStates).forEach((el) => {
       if (el !== key) tableHeaderStates[el] = 'initial';
     });
-    // Array.from(arrowsSort).forEach(el => {
-    //   if (el !== item) {
-    //     el.src = 'img/sort-arrow.png';
-    //     el.classList.add('initial__arrow');
-    //   }
-    // });
   }
-}
+};
