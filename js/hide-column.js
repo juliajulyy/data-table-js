@@ -36,6 +36,7 @@ export const selectColumn = () => {
 
   filterBtn.addEventListener('click', () => {
     filterList.classList.toggle('show');
+    console.log('click filter');
   });
 
   all.addEventListener('click', () => {
@@ -48,7 +49,7 @@ export const selectColumn = () => {
 
   ok.addEventListener('click', () => {
     const operate = Array.from(inputCheckboxes).some((el) => el.id === 'operate' && el.checked);
-    const checkedArr = Array.from(inputCheckboxes).filter((item) => item.checked && item.id !== 'operate');
+    const checkedArr = Array.from(inputCheckboxes).map((item) => (item.checked && item.id !== 'operate' ? item.id : null));
     filterWorkers(checkedArr, operate);
     filterList.classList.remove('show');
   });

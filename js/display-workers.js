@@ -1,8 +1,4 @@
-import { displayHeader } from './display-header';
-
 export const displayWorkers = (workers, operate = true) => {
-  displayHeader(workers, operate);
-
   const tblBody = document.querySelector('#tbody');
   tblBody.innerHTML = '';
 

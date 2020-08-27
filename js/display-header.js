@@ -1,6 +1,6 @@
 import { setState } from './sort-data';
 
-export const displayHeader = (workers, operate) => {
+export const displayHeader = (workers, operate = true) => {
   const tblHead = document.querySelector('#thead');
   tblHead.innerHTML = '';
 

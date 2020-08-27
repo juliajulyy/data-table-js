@@ -4,6 +4,7 @@ import '../img/sort-arrow.png';
 import '../img/asc.png';
 import '../img/desc.png';
 
+import { displayHeader } from './display-header';
 import { displayWorkers } from './display-workers';
 import { initListeners } from './listeners';
 import { getWorkers } from './get-local-worker';
@@ -65,6 +66,9 @@ const main = () => {
   }
 
   localStorage.removeItem('sortedWorkers');
+
+  // generate header
+  displayHeader(getWorkers());
 
   displayWorkers(getWorkers());
 

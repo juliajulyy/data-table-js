@@ -36,3 +36,7 @@
 .checkbox__block-btn span:hover {
   color:  #007bff;
 }
+
+.show {
+  display: block;
+}
