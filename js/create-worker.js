@@ -15,16 +15,11 @@ const createWorker = () => {
   return null;
 };
 
-const addWorker = () => {
+export const addWorker = () => {
   toggleModal(true);
 
   savebtn.addEventListener('click', () => {
     const newWorker = createWorker();
     if (newWorker) setWorker(newWorker);
   });
-};
-
-export const addNewWorker = () => {
-  const addNewbtn = document.querySelector('#add-new');
-  addNewbtn.addEventListener('click', addWorker);
 };

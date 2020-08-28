@@ -49,7 +49,7 @@ export const selectColumn = () => {
   okBtn.addEventListener('click', () => {
     const operate = Array.from(inputCheckboxes).some((el) => el.id === 'operate' && el.checked);
     const checkedArr = Array.from(inputCheckboxes).map((item) => (item.checked && item.id !== 'operate' ? item.id : null));
-    filterWorkers(checkedArr, operate);
+    if (checkedArr.includes(!null)) filterWorkers(checkedArr, operate);
     filterList.classList.remove('show');
   });
 };
