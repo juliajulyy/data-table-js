@@ -6,7 +6,7 @@ export const toggleModal = (isDisplay) => modal.style.display = isDisplay ? 'blo
 
 export const closeModal = () => {
   closeIcon.addEventListener('click', () => toggleModal(false));
-  window.addEventListener('click', () => {
+  window.addEventListener('click', (event) => {
     if (event.target === modal) toggleModal(false);
   });
 };

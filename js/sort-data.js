@@ -1,9 +1,5 @@
-/* eslint-disable no-param-reassign */
 import { getFilterWorkers } from './get-local-worker';
 import { displayWorkers } from './display-workers';
-
-// const arrowsSort = document.querySelectorAll(".filters__arrow");
-// console.log(arrowsSort)
 
 const transfDate = (worker) => {
   const dateParts = worker.createdDate.split('/');

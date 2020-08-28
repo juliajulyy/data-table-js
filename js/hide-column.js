@@ -7,9 +7,9 @@ const filterBtn = document.querySelector('#filter-btn');
 const filterList = document.querySelector('#filter-list');
 const filtersDropdown = document.querySelector('#filter-hide');
 
-const ok = document.querySelector('#ok');
-const all = document.querySelector('#all');
-const clear = document.querySelector('#clear');
+const okBtn = document.querySelector('#ok');
+const allBtn = document.querySelector('#all');
+const clearBtn = document.querySelector('#clear');
 
 const inputCheckboxes = document.querySelectorAll('#filter-list input');
 
@@ -36,18 +36,17 @@ export const selectColumn = () => {
 
   filterBtn.addEventListener('click', () => {
     filterList.classList.toggle('show');
-    console.log('click filter');
   });
 
-  all.addEventListener('click', () => {
-    Array.from(inputCheckboxes).forEach((item) => item.checked = true);
+  allBtn.addEventListener('click', () => {
+    Array.from(inputCheckboxes).map((item) => item.checked = true);
   });
 
-  clear.addEventListener('click', () => {
+  clearBtn.addEventListener('click', () => {
     Array.from(inputCheckboxes).forEach((item) => item.checked = false);
   });
 
-  ok.addEventListener('click', () => {
+  okBtn.addEventListener('click', () => {
     const operate = Array.from(inputCheckboxes).some((el) => el.id === 'operate' && el.checked);
     const checkedArr = Array.from(inputCheckboxes).map((item) => (item.checked && item.id !== 'operate' ? item.id : null));
     filterWorkers(checkedArr, operate);

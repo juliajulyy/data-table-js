@@ -44,7 +44,7 @@ export const displayHeader = (workers, operate = true) => {
     createOperateTh();
   } else if (workers !== null) {
     Object.keys(workers[0]).forEach((key) => {
-      if (tableHeaders.hasOwnProperty(key)) {
+      if (Object.prototype.hasOwnProperty.call(tableHeaders, key)) {
         createThead(key);
       }
     });
