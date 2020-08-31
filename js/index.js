@@ -9,7 +9,6 @@ import { displayWorkers } from './display-workers';
 import { initListeners } from './listeners';
 import { getWorkers } from './get-local-worker';
 import { setWorker } from './set-local-worker';
-import { addNewWorker } from './create-worker';
 import { initializeDropdownPopup } from './filter-in-column';
 import { selectColumn } from './hide-column';
 import { searchTable } from './search-by-key';
@@ -74,9 +73,6 @@ const main = () => {
 
   // init listeners
   initListeners();
-
-  // init new worker button
-  addNewWorker();
 
   // init dropdown modal
   initializeDropdownPopup();

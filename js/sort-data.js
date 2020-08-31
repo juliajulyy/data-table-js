@@ -33,14 +33,16 @@ const tableHeaderStates = {
 };
 
 export const setState = (item, key, operate = true) => {
-  item.classList.remove('initial__arrow');
+  const arrowsSort = document.querySelectorAll('.filters__arrow');
+  const img = item;
+  img.classList.remove('initial__arrow');
 
   if ((tableHeaderStates[key] === 'initial') || (tableHeaderStates[key] === 'desc')) {
-    item.src = 'img/asc.png';
+    img.src = 'img/asc.png';
     tableHeaderStates[key] = 'asc';
     displayWorkers(sortWorkers(key), operate);
   } else if (tableHeaderStates[key] === 'asc') {
-    item.src = 'img/desc.png';
+    img.src = 'img/desc.png';
     displayWorkers(sortWorkers(key).reverse(), operate);
     tableHeaderStates[key] = 'desc';
   }
@@ -49,5 +51,12 @@ export const setState = (item, key, operate = true) => {
     Object.keys(tableHeaderStates).forEach((el) => {
       if (el !== key) tableHeaderStates[el] = 'initial';
     });
+    Array.from(arrowsSort).forEach((el) => {
+      if (el !== item) {
+        el.src = 'img/sort-arrow.png';
+        el.classList.add('initial__arrow');
+      }
+    });
   }
+  return img;
 };
