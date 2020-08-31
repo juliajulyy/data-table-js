@@ -39,11 +39,19 @@ export const selectColumn = () => {
   });
 
   allBtn.addEventListener('click', () => {
-    Array.from(inputCheckboxes).map((item) => item.checked = true);
+    Array.from(inputCheckboxes).map((checkbox) => {
+      const item = checkbox;
+      item.checked = true;
+      return item;
+    });
   });
 
   clearBtn.addEventListener('click', () => {
-    Array.from(inputCheckboxes).forEach((item) => item.checked = false);
+    Array.from(inputCheckboxes).map((checkbox) => {
+      const item = checkbox;
+      item.checked = false;
+      return item;
+    });
   });
 
   okBtn.addEventListener('click', () => {

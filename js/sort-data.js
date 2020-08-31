@@ -51,7 +51,8 @@ export const setState = (item, key, operate = true) => {
     Object.keys(tableHeaderStates).forEach((el) => {
       if (el !== key) tableHeaderStates[el] = 'initial';
     });
-    Array.from(arrowsSort).forEach((el) => {
+    Array.from(arrowsSort).forEach((arrow) => {
+      const el = arrow;
       if (el !== item) {
         el.src = 'img/sort-arrow.png';
         el.classList.add('initial__arrow');
