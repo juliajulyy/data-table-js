@@ -4,6 +4,8 @@ import '../img/sort-arrow.png';
 import '../img/asc.png';
 import '../img/desc.png';
 
+import store from './redux/store';
+import { selectWorkers } from './redux/ducks/workers';
 import { displayHeader } from './display-header';
 import { displayWorkers } from './display-workers';
 import { initListeners } from './listeners';
@@ -15,50 +17,7 @@ import { searchTable } from './search-by-key';
 import { closeModal } from './modal';
 
 const main = () => {
-  const workers = [
-    {
-      id: 1,
-      firstName: 'John',
-      lastName: 'Pool',
-      position: 'Front-end dev',
-      createdDate: '11/12/2019',
-    },
-    {
-      id: 2,
-      firstName: 'Mia',
-      lastName: 'Chester',
-      position: 'Front-end dev',
-      createdDate: '02/03/2020',
-    },
-    {
-      id: 3,
-      firstName: 'James',
-      lastName: 'Frazier',
-      position: 'HR',
-      createdDate: '06/06/2020',
-    },
-    {
-      id: 4,
-      firstName: 'Matt',
-      lastName: 'Smith',
-      position: 'Back-end dev',
-      createdDate: '07/17/2020',
-    },
-    {
-      id: 5,
-      firstName: 'Joe',
-      lastName: 'Cole',
-      position: 'Tester',
-      createdDate: '01/08/2020',
-    },
-    {
-      id: 6,
-      firstName: 'Ulyana',
-      lastName: 'Kravchenko',
-      position: 'Front-end dev',
-      createdDate: '03/07/2020',
-    },
-  ];
+  const workers = selectWorkers(store.getState());
 
   if (!localStorage.getItem('workers')) {
     workers.forEach((item) => setWorker(item));
