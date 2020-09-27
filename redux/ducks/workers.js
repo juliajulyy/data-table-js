@@ -46,14 +46,28 @@ const initialState = {
 };
 
 const ADD_NEW_WORKER = 'ADD_NEW_WORKER';
+const REMOVE_WORKER = 'REMOVE_WORKER';
+const UPDATE_WORKER = 'UPDATE_WORKER';
 
 export const addNewWorker = (payload) => ({ type: ADD_NEW_WORKER, payload });
+
+export const deleteWorker = (payload) => ({ type: REMOVE_WORKER, payload });
+
+export const updateWorker = (payload) => ({ type: UPDATE_WORKER, payload });
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_WORKER: return {
       ...state,
       items: [...state.items, action.payload],
+    };
+    case REMOVE_WORKER: return {
+      ...state,
+      items: state.items.filter((item) => item.id !== action.payload),
+    };
+    case UPDATE_WORKER: return {
+      ...state,
+      items: state.items.map((item) => (item.id === action.payload.id ? action.payload : item)),
     };
     default:
       return state;
