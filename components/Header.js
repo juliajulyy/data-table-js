@@ -1,7 +1,7 @@
 import { selectColumns, changeArrow } from '../redux/ducks/header';
 import store from '../redux/store';
 
-export const displayHeader = () => {
+export default () => {
   const columns = selectColumns(store.getState());
 
   const tablelRow = document.createElement('tr');
@@ -46,8 +46,8 @@ export const displayHeader = () => {
     tablelRow.appendChild(tableHead);
   });
 
-  const tblHead = document.querySelector('#thead');
-  tblHead.innerHTML = '';
+  const tblHead = document.createElement('thead');
+  tblHead.className = 'thead-light';
 
   tblHead.appendChild(tablelRow);
 

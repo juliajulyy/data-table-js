@@ -4,8 +4,9 @@ import '../img/sort-arrow.png';
 import '../img/asc.png';
 import '../img/desc.png';
 
-import store from './redux/store';
-import { selectWorkers } from './redux/ducks/workers';
+import store from '../redux/store';
+import '../subscribe';
+import { selectWorkers } from '../redux/ducks/workers';
 import { displayHeader } from './display-header';
 import { displayWorkers } from './display-workers';
 import { initListeners } from './listeners';
@@ -19,16 +20,12 @@ import { closeModal } from './modal';
 const main = () => {
   const workers = selectWorkers(store.getState());
 
-  if (!localStorage.getItem('workers')) {
-    workers.forEach((item) => setWorker(item));
-  }
-
   localStorage.removeItem('sortedWorkers');
 
   // generate header
-  displayHeader(getWorkers());
+  displayHeader(workers);
 
-  displayWorkers(getWorkers());
+  displayWorkers(workers);
 
   // init listeners
   initListeners();

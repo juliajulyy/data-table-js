@@ -1,8 +1,7 @@
-import { setWorker } from './set-local-worker';
 import { NewWorker } from './worker-factory';
 import { toggleModal, savebtn } from './modal';
-import { addNewWorker } from './redux/ducks/workers';
-import store from './redux/store';
+import { addNewWorker } from '../redux/ducks/workers';
+import store from '../redux/store';
 
 const validateName = (str) => str.replace(/\s/g, '').length > 2;
 
