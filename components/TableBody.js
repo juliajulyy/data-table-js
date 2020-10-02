@@ -11,7 +11,7 @@ export default () => {
 
   rows.forEach((row) => tableBody.appendChild(row));
 
-  tableBody.appendChild(Modal(() => store.dispatch(updateWorker(worker))));
+  // tableBody.appendChild(Modal(() => store.dispatch(updateWorker(worker))));
 
   return tableBody;
 };
