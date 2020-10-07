@@ -1,4 +1,5 @@
-import Modal from './WorkerForm';
+import store from '../redux/store';
+import { openCreate } from '../redux/ducks/modal';
 
 export default () => {
   const addNewBtn = document.createElement('button');
@@ -7,7 +8,7 @@ export default () => {
   addNewBtn.className = 'btn btn-primary btn-success float-right';
   addNewBtn.innerHTML = 'Add New';
 
-  addNewBtn.addEventListener('click', () => Modal({ visibility: true }));
+  addNewBtn.addEventListener('click', () => store.dispatch(openCreate()));
 
   return addNewBtn;
 };

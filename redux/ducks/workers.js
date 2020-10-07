@@ -1,4 +1,11 @@
 const initialState = {
+  currentWorker: {
+    id: null,
+    firstName: '',
+    lastName: '',
+    position: 'Front-end dev',
+    createdDate: '',
+  },
   items: [
     {
       id: 1,
@@ -47,11 +54,14 @@ const initialState = {
 
 const ADD_NEW_WORKER = 'ADD_NEW_WORKER';
 const REMOVE_WORKER = 'REMOVE_WORKER';
+const FIND_WORKER = 'FIND_WORKER';
 const UPDATE_WORKER = 'UPDATE_WORKER';
 
 export const addNewWorker = (payload) => ({ type: ADD_NEW_WORKER, payload });
 
 export const deleteWorker = (payload) => ({ type: REMOVE_WORKER, payload });
+
+export const findWorker = (payload) => ({ type: FIND_WORKER, payload });
 
 export const updateWorker = (payload) => ({ type: UPDATE_WORKER, payload });
 
@@ -65,9 +75,28 @@ export default (state = initialState, action) => {
       ...state,
       items: state.items.filter((item) => item.id !== action.payload),
     };
+    case FIND_WORKER: return {
+      ...state,
+      currentWorker: state.items.find((item) => item.id === action.payload),
+    };
     case UPDATE_WORKER: return {
       ...state,
-      items: state.items.map((item) => (item.id === action.payload.id ? action.payload : item)),
+      items: state.items.map((item) => {
+        const {
+          firstNameState,
+          lastNameState,
+          selectState,
+        } = action.payload;
+
+        const updatedWorker = {
+          ...state.currentWorker,
+          firstName: firstNameState,
+          lastName: lastNameState,
+          position: selectState,
+        };
+
+        return item.id === state.currentWorker.id ? updatedWorker : item;
+      }),
     };
     default:
       return state;
@@ -75,3 +104,4 @@ export default (state = initialState, action) => {
 };
 
 export const selectWorkers = (state) => state.workers.items;
+export const selectCurrentWorker = (state) => state.workers.currentWorker;

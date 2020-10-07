@@ -1,6 +1,7 @@
 import TableCell from './TableCell';
 import store from '../redux/store';
-import { deleteWorker, updateWorker } from '../redux/ducks/workers';
+import { deleteWorker, findWorker } from '../redux/ducks/workers';
+import { openUpdate } from '../redux/ducks/modal';
 
 export default (worker) => {
   const tableRow = document.createElement('tr');
@@ -15,7 +16,10 @@ export default (worker) => {
   const btnEdit = document.createElement('button');
   btnEdit.innerHTML = 'Edit';
   btnEdit.className = 'btn btn-outline-primary edit-btn';
-  btnEdit.addEventListener('click', () => store.dispatch(updateWorker(worker)));
+  btnEdit.addEventListener('click', () => {
+    store.dispatch(findWorker(worker.id));
+    store.dispatch(openUpdate());
+  });
 
   const btnDelete = document.createElement('button');
   btnDelete.innerHTML = 'Delete';

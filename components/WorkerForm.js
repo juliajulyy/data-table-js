@@ -1,6 +1,27 @@
-import Submit from './SubmitWorker';
+import store from '../redux/store';
+import { closeModal } from '../redux/ducks/modal';
+import InputName from './InputName';
+import InputPosition from './InputPosition';
 
-export default ({ visibility = false }) => {
+export default ({
+  visibility = false,
+  firstNameInput = '',
+  lastNameInput = '',
+  positionInput = 'Front-end dev',
+  onSubmit,
+}) => {
+  const state = {
+    firstNameState: firstNameInput,
+    lastNameState: lastNameInput,
+    selectState: positionInput,
+  };
+
+  const { firstNameState, lastNameState, selectState } = state;
+
+  const changeInput = (fieldName) => (e) => {
+    state[fieldName] = e.target.value;
+  };
+
   const modal = document.createElement('div');
   modal.id = 'modal-window';
   modal.className = 'modal';
@@ -24,6 +45,7 @@ export default ({ visibility = false }) => {
   closeBtnName.innerHTML = '&times;';
 
   closeBtn.appendChild(closeBtnName);
+  closeBtn.addEventListener('click', () => store.dispatch(closeModal()));
 
   modalHeader.appendChild(modalTitle);
   modalHeader.appendChild(closeBtn);
@@ -34,58 +56,13 @@ export default ({ visibility = false }) => {
   modalBody.id = 'modal-form';
   modalBody.className = 'modal-body';
 
-  const modalBlocks = {
-    firstName: 'First Name',
-    lastName: 'Last Name',
-    position: 'Position',
-  };
+  const firstName = InputName(firstNameState, 'First Name', changeInput('firstNameState'));
+  const lastName = InputName(lastNameState, 'Last Name', changeInput('lastNameState'));
+  const position = InputPosition(selectState, 'Position', changeInput('position'));
 
-  Object.entries(modalBlocks).forEach(([id, name]) => {
-    const element = document.createElement('div');
-    element.className = 'input-group mb-3';
-
-    const childBlock = document.createElement('div');
-    childBlock.className = 'input-group-prepend';
-
-    if (name === 'Position') {
-      const inputName = document.createElement('div');
-      inputName.className = 'btn modal__btn-name';
-      inputName.innerHTML = name;
-
-      childBlock.appendChild(inputName);
-
-      const selectInput = document.createElement('select');
-      selectInput.id = id;
-      selectInput.className = 'custom-select';
-      selectInput.required = true;
-
-      const selectOptions = ['Front-end dev', 'Back-end dev', 'Full stack dev',
-        'Mobile dev', 'Web designer', 'HR', 'Tester', 'Service manager'];
-      selectOptions.forEach((optionName) => {
-        const option = document.createElement('option');
-        option.innerHTML = optionName;
-        selectInput.appendChild(option);
-      });
-      element.appendChild(selectInput);
-    } else {
-      const inputName = document.createElement('span');
-      inputName.className = 'input-group-text';
-      inputName.innerHTML = name;
-
-      childBlock.appendChild(inputName);
-      element.appendChild(childBlock);
-
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.id = id;
-      input.className = 'form-control';
-      input.required = true;
-
-      element.appendChild(input);
-    }
-    modalBody.appendChild(element);
-  });
-
+  modalBody.appendChild(firstName);
+  modalBody.appendChild(lastName);
+  modalBody.appendChild(position);
   modalContent.appendChild(modalBody);
 
   const modalFooter = document.createElement('div');
@@ -95,7 +72,10 @@ export default ({ visibility = false }) => {
   submit.id = 'modal-submit';
   submit.className = 'btn btn-primary';
   submit.innerHTML = 'Save changes';
-  submit.addEventListener('click', () => Submit());
+  submit.addEventListener('click', () => {
+    onSubmit(state);
+    store.dispatch(closeModal());
+  });
 
   modalFooter.appendChild(submit);
   modalContent.appendChild(modalFooter);
