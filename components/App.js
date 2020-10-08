@@ -2,7 +2,7 @@ import Table from './Table';
 import AddNewBtn from './AddNewBtn';
 import WorkerForm from './WorkerForm';
 import store from '../redux/store';
-import { updateWorker, selectCurrentWorker } from '../redux/ducks/workers';
+import { addNewWorker, updateWorker, selectCurrentWorker } from '../redux/ducks/workers';
 import { selectCreateModal, selectUpdateModal } from '../redux/ducks/modal';
 
 export default () => {
@@ -17,6 +17,7 @@ export default () => {
 
   app.appendChild(WorkerForm({
     visibility: createModalState,
+    onSubmit: (state) => store.dispatch(addNewWorker(state)),
   }));
   app.appendChild(WorkerForm({
     visibility: updateModalState,

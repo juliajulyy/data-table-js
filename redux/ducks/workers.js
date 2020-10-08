@@ -69,7 +69,13 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_NEW_WORKER: return {
       ...state,
-      items: [...state.items, action.payload],
+      items: [...state.items, {
+        id: Math.round(Math.random() * new Date().getMilliseconds()),
+        firstName: action.payload.firstNameState,
+        lastName: action.payload.lastNameState,
+        position: action.payload.selectState,
+        createdDate: `${new Date().getMonth() + 1}/${new Date().getDate()}/${new Date().getFullYear()}`,
+      }],
     };
     case REMOVE_WORKER: return {
       ...state,

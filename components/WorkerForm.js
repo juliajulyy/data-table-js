@@ -58,7 +58,7 @@ export default ({
 
   const firstName = InputName(firstNameState, 'First Name', changeInput('firstNameState'));
   const lastName = InputName(lastNameState, 'Last Name', changeInput('lastNameState'));
-  const position = InputPosition(selectState, 'Position', changeInput('position'));
+  const position = InputPosition(selectState, 'Position', changeInput('selectState'));
 
   modalBody.appendChild(firstName);
   modalBody.appendChild(lastName);
