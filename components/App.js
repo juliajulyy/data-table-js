@@ -1,3 +1,4 @@
+import Filters from './Filters';
 import Table from './Table';
 import AddNewBtn from './AddNewBtn';
 import WorkerForm from './WorkerForm';
@@ -12,6 +13,7 @@ export default () => {
   const { firstName, lastName, position } = selectCurrentWorker(store.getState());
 
   app.innerHTML = '';
+  app.appendChild(Filters());
   app.appendChild(Table());
   app.appendChild(AddNewBtn());
 

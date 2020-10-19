@@ -1,5 +1,4 @@
 .checkbox {
-  display: none;
   position: absolute;
   right: 0;
   background-color: white;
@@ -7,13 +6,19 @@
   box-shadow: 0 3px 7px 0px rgba(0,0,0,0.5);
   margin-top: 5px;
   padding: 15px;
-  width: 380px;
+  width: 300px;
   z-index: 1;
 }
 
 .checkbox__inputs {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  margin: 0 15px;
+}
+
+.checkbox__inputs input {
+  margin-right: 10px;
 }
 
 .checkbox__block-btn {
